@@ -1,5 +1,4 @@
 "use client";
-
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
@@ -33,7 +32,6 @@ export default function Home() {
       {/* Dynamic Background */}
       <div className="absolute inset-0 z-[-1]">
         <div className="w-full h-full bg-gradient-to-b from-gray-900 via-purple-900 to-black animate-gradient"></div>
-
         {/* Floating Shapes */}
         <div className="absolute inset-0">
           {floatingShapes.map((shape, index) => (
@@ -81,24 +79,21 @@ export default function Home() {
         >
           Welcome!
         </motion.h2>
-
         <h1 className="text-4xl sm:text-5xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-          Hi, I'm Alex Mustapha 🚀
+          Hi, I&#39;m Alex Mustapha 🚀
         </h1>
-
         <p className="text-lg sm:text-xl text-gray-300 font-medium">
           Full-Stack Developer | Building Scalable Web Solutions
         </p>
-
         <div className="flex gap-4 mt-6">
-        <a
-  href="/resume.pdf" // Ensure this path is correct
-  download="Alex-Mustapha-Resume.pdf"
-  className="group relative px-6 py-3 border-2 border-cyan-500 text-cyan-500 font-semibold rounded-full hover:bg-cyan-500 hover:text-black transition duration-300 overflow-hidden"
->
-  <span className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:scale-110"></span>
-  <span className="relative z-10">Download Resume</span>
-</a>
+          <a
+            href="/resume.pdf" // Ensure this path is correct
+            download="Alex-Mustapha-Resume.pdf"
+            className="group relative px-6 py-3 border-2 border-cyan-500 text-cyan-500 font-semibold rounded-full hover:bg-cyan-500 hover:text-black transition duration-300 overflow-hidden"
+          >
+            <span className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:scale-110"></span>
+            <span className="relative z-10">Download Resume</span>
+          </a>
         </div>
       </motion.div>
 

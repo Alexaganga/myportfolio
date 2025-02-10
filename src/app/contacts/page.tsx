@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { MdEmail } from "react-icons/md"; // Real email icon
 import { FaGithub, FaLinkedin, FaXTwitter, FaTiktok, FaTelegram, FaWhatsapp } from "react-icons/fa6"; // Updated icons for X (FaXTwitter)
 import Head from "next/head";
-import emailjs from "emailjs-com";
 
 const Contact: FC = () => {
   return (
@@ -24,7 +23,6 @@ const Contact: FC = () => {
         <meta name="twitter:description" content="Get in touch with Alex Mustapha, a full-stack developer passionate about building innovative solutions. Reach out via email, phone, or social media." />
         <meta name="twitter:image" content="/images/alex1.jpg" /> {/* Replace with your profile image */}
       </Head>
-
       <motion.section
         id="contact"
         className="py-20 px-6 sm:px-12 md:px-20 lg:px-32 xl:px-40 bg-gradient-to-br from-indigo-950 via-purple-900 to-pink-800 text-white text-center min-h-screen flex flex-col justify-center items-center"
@@ -34,12 +32,11 @@ const Contact: FC = () => {
       >
         {/* Header */}
         <h2 className="text-4xl sm:text-5xl font-extrabold mb-4 tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-500 animate-pulse">
-          Let's Connect 🤝✨
+          Let&#39;s Connect 🤝✨
         </h2>
         <p className="text-lg sm:text-xl mb-6 max-w-2xl">
-          I'm Alex, a tech enthusiast who loves building innovative solutions. Whether it's a project, collaboration, or just a chat, feel free to reach out! 😊
+          I&#39;m Alex, a tech enthusiast who loves building innovative solutions. Whether it&#39;s a project, collaboration, or just a chat, feel free to reach out! 😊
         </p>
-
         {/* Contact Buttons */}
         <motion.div
           className="flex flex-col items-center justify-center space-y-6"
@@ -49,13 +46,12 @@ const Contact: FC = () => {
         >
           {/* Email Button */}
           <a
-  href="mailto:alexagangamoustapha430@gmail.com?subject=Hello%20Alex&body=I%20would%20like%20to%20connect%20with%20you."
-  className="bg-white text-indigo-800 px-6 py-3 rounded-full shadow-lg text-lg font-semibold flex items-center space-x-2 transition-all duration-300 hover:scale-105 hover:bg-indigo-100"
->
-  <MdEmail className="text-2xl" /> {/* Email icon */}
-  <span>Email Me 📩</span>
-</a>
-
+            href="mailto:alexagangamoustapha430@gmail.com?subject=Hello%20Alex&body=I%20would%20like%20to%20connect%20with%20you."
+            className="bg-white text-indigo-800 px-6 py-3 rounded-full shadow-lg text-lg font-semibold flex items-center space-x-2 transition-all duration-300 hover:scale-105 hover:bg-indigo-100"
+          >
+            <MdEmail className="text-2xl" /> {/* Email icon */}
+            <span>Email Me 📩</span>
+          </a>
           {/* Phone Contact */}
           <p className="text-xl font-semibold">
             Or call me:{" "}
@@ -66,35 +62,32 @@ const Contact: FC = () => {
               +254 7411 388 844
             </a>
           </p>
-
           {/* Social Media Icons */}
-          {/* Social Media Icons */}
-<div className="flex space-x-6 mt-6">
-  {[
-    { href: "https://github.com/", icon: <FaGithub />, label: "GitHub", color: "#171515" }, // GitHub Black
-    { href: "https://linkedin.com", icon: <FaLinkedin />, label: "LinkedIn", color: "#0A66C2" }, // LinkedIn Blue
-    { href: "https://x.com", icon: <FaXTwitter />, label: "X", color: "#1D9BF0" }, // X (formerly Twitter)
-    { href: "https://tiktok.com", icon: <FaTiktok />, label: "TikTok", color: "#010101" }, // TikTok Black
-    { href: "https://wa.me/+254741138844", icon: <FaWhatsapp />, label: "WhatsApp", color: "#25D366" }, // WhatsApp Green
-    { href: "https://t.me/yourusername", icon: <FaTelegram />, label: "Telegram", color: "#0088CC" }, // Telegram Blue
-  ].map(({ href, icon, label, color }, index) => (
-    <a
-      key={index}
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="relative text-5xl transition-all duration-300 hover:scale-125 hover:shadow-lg hover:shadow-cyan-500/50 group"
-      style={{ color }} // Use real company colors
-    >
-      {icon}
-      <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        {label}
-      </span>
-    </a>
-  ))}
-</div>
+          <div className="flex space-x-6 mt-6">
+            {[
+              { href: "https://github.com/", icon: <FaGithub />, label: "GitHub", color: "#171515" }, // GitHub Black
+              { href: "https://linkedin.com", icon: <FaLinkedin />, label: "LinkedIn", color: "#0A66C2" }, // LinkedIn Blue
+              { href: "https://x.com", icon: <FaXTwitter />, label: "X", color: "#1D9BF0" }, // X (formerly Twitter)
+              { href: "https://tiktok.com", icon: <FaTiktok />, label: "TikTok", color: "#010101" }, // TikTok Black
+              { href: "https://wa.me/+254741138844", icon: <FaWhatsapp />, label: "WhatsApp", color: "#25D366" }, // WhatsApp Green
+              { href: "https://t.me/yourusername", icon: <FaTelegram />, label: "Telegram", color: "#0088CC" }, // Telegram Blue
+            ].map(({ href, icon, label, color }, index) => (
+              <a
+                key={index}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative text-5xl transition-all duration-300 hover:scale-125 hover:shadow-lg hover:shadow-cyan-500/50 group"
+                style={{ color }} // Use real company colors
+              >
+                {icon}
+                <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {label}
+                </span>
+              </a>
+            ))}
+          </div>
         </motion.div>
-
         {/* Fun Fact Section */}
         <motion.div
           className="mt-12 text-center"
@@ -106,11 +99,9 @@ const Contact: FC = () => {
             Fun Fact 🎉☕
           </h4>
           <p className="text-lg sm:text-xl text-gray-300">
-            When I’m not coding, you’ll probably find me sipping coffee ☕️ or exploring new tech trends 📚. Life’s too
-            short for boring apps! 😄
+            When I&#39;m not coding, you&#39;ll probably find me sipping coffee ☕️ or exploring new tech trends 📚. Life&#39;s too short for boring apps! 😄
           </p>
         </motion.div>
-
         {/* 3D Emojis Section */}
         <div className="mt-12 flex justify-center space-x-4">
           {[["🤖", "AI Enthusiast"], ["🚀", "Launching Ideas"], ["💻", "Tech Lover"], ["📚", "Learning Always"]].map(
@@ -131,5 +122,4 @@ const Contact: FC = () => {
     </>
   );
 };
-
 export default Contact;
