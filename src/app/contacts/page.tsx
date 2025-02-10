@@ -2,8 +2,9 @@
 import { FC } from "react";
 import { motion } from "framer-motion";
 import { MdEmail } from "react-icons/md"; // Real email icon
-import { FaGithub, FaLinkedin, FaXTwitter, FaTiktok, FaWhatsapp } from "react-icons/fa6"; // Updated icons for X (FaXTwitter)
+import { FaGithub, FaLinkedin, FaXTwitter, FaTiktok, FaTelegram, FaWhatsapp } from "react-icons/fa6"; // Updated icons for X (FaXTwitter)
 import Head from "next/head";
+import emailjs from "emailjs-com";
 
 const Contact: FC = () => {
   return (
@@ -48,12 +49,12 @@ const Contact: FC = () => {
         >
           {/* Email Button */}
           <a
-            href="mailto:alexagangamoustapha430@gmail.com"
-            className="bg-white text-indigo-800 px-6 py-3 rounded-full shadow-lg text-lg font-semibold flex items-center space-x-2 transition-all duration-300 hover:scale-105 hover:bg-indigo-100"
-          >
-            <MdEmail className="text-2xl" /> {/* Real email icon */}
-            <span>Email Me 📩</span>
-          </a>
+  href="mailto:alexagangamoustapha430@gmail.com?subject=Hello%20Alex&body=I%20would%20like%20to%20connect%20with%20you."
+  className="bg-white text-indigo-800 px-6 py-3 rounded-full shadow-lg text-lg font-semibold flex items-center space-x-2 transition-all duration-300 hover:scale-105 hover:bg-indigo-100"
+>
+  <MdEmail className="text-2xl" /> {/* Email icon */}
+  <span>Email Me 📩</span>
+</a>
 
           {/* Phone Contact */}
           <p className="text-xl font-semibold">
@@ -67,29 +68,31 @@ const Contact: FC = () => {
           </p>
 
           {/* Social Media Icons */}
-          <div className="flex space-x-6 mt-6">
-            {[
-              { href: "https://github.com/", icon: <FaGithub />, label: "GitHub", color: "#171515" }, // GitHub Black
-              { href: "https://linkedin.com", icon: <FaLinkedin />, label: "LinkedIn", color: "#0A66C2" }, // LinkedIn Blue
-              { href: "https://x.com", icon: <FaXTwitter />, label: "X", color: "#1D9BF0" }, // X (formerly Twitter)
-              { href: "https://tiktok.com", icon: <FaTiktok />, label: "TikTok", color: "#010101" }, // TikTok Black
-              { href: "https://wa.me/+254741138844", icon: <FaWhatsapp />, label: "WhatsApp", color: "#25D366" }, // WhatsApp Green
-            ].map(({ href, icon, label, color }, index) => (
-              <a
-                key={index}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative text-5xl transition-all duration-300 hover:scale-125 hover:shadow-lg hover:shadow-cyan-500/50 group"
-                style={{ color }} // Use real company colors
-              >
-                {icon}
-                <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {label}
-                </span>
-              </a>
-            ))}
-          </div>
+          {/* Social Media Icons */}
+<div className="flex space-x-6 mt-6">
+  {[
+    { href: "https://github.com/", icon: <FaGithub />, label: "GitHub", color: "#171515" }, // GitHub Black
+    { href: "https://linkedin.com", icon: <FaLinkedin />, label: "LinkedIn", color: "#0A66C2" }, // LinkedIn Blue
+    { href: "https://x.com", icon: <FaXTwitter />, label: "X", color: "#1D9BF0" }, // X (formerly Twitter)
+    { href: "https://tiktok.com", icon: <FaTiktok />, label: "TikTok", color: "#010101" }, // TikTok Black
+    { href: "https://wa.me/+254741138844", icon: <FaWhatsapp />, label: "WhatsApp", color: "#25D366" }, // WhatsApp Green
+    { href: "https://t.me/yourusername", icon: <FaTelegram />, label: "Telegram", color: "#0088CC" }, // Telegram Blue
+  ].map(({ href, icon, label, color }, index) => (
+    <a
+      key={index}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="relative text-5xl transition-all duration-300 hover:scale-125 hover:shadow-lg hover:shadow-cyan-500/50 group"
+      style={{ color }} // Use real company colors
+    >
+      {icon}
+      <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        {label}
+      </span>
+    </a>
+  ))}
+</div>
         </motion.div>
 
         {/* Fun Fact Section */}

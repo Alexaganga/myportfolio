@@ -7,6 +7,7 @@ import {
   FaLinkedin,
   FaTiktok,
   FaWhatsapp,
+  FaTelegram,
   FaSearch, // Import FaSearch here
 } from "react-icons/fa";
 import { RiTwitterXFill } from "react-icons/ri"; // Import the "X" icon
@@ -129,11 +130,12 @@ function Header() {
 
 function Footer() {
   const socialIcons = [
-    { href: "https://github.com", icon: <FaGithub />, color: "#ffffff" }, // GitHub White
+    { href: "https://github.com/Alexaganga", icon: <FaGithub />, color: "#ffffff" }, // GitHub White
     { href: "https://linkedin.com", icon: <FaLinkedin />, color: "#0A66C2" }, // LinkedIn Blue
-    { href: "https://x.com", icon: <RiTwitterXFill />, color: "#ffffff" }, // X White
-    { href: "https://www.tiktok.com", icon: <FaTiktok />, color: "#FE2C55" }, // TikTok Pink
-    { href: "https://wa.me/", icon: <FaWhatsapp />, color: "#25D366" }, // WhatsApp Green
+    { href: "http://x.com/AgangaAlex", icon: <RiTwitterXFill />, color: "#ffffff" }, // X White
+    { href: "https://www.tiktok.com/@alexmoustapha?lang=en", icon: <FaTiktok />, color: "#FE2C55" }, // TikTok Pink
+    { href: "https://wa.me/254741138844", icon: <FaWhatsapp />, color: "#25D366" }, // WhatsApp Green
+    { href: "https://t.me/Moustapha705", icon: <FaTelegram />, color: "#0088cc" }, // Telegram Blue
   ];
   return (
     <motion.footer
@@ -165,7 +167,7 @@ function Footer() {
       </div>
       {/* Copyright & Legal Info */}
       <div className="text-sm text-gray-500">
-        <p>&copy; 2025 Alex Mustapha. All rights reserved.</p>
+        <p>&copy; 2025 Alex Mustapha. Coding your Dreams To Reality.</p>
       </div>
     </motion.footer>
   );
