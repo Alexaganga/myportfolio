@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import "@/app/globals.css"; // Ensure the correct path
 import Head from "next/head";
 
 const projects = [

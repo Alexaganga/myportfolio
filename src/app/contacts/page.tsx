@@ -1,31 +1,39 @@
+// Add the "use client" directive to enable client-side rendering
 "use client";
 
-import { FC, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
+import "@/app/globals.css";
 
-const ContactPage: FC = () => {
+// Define the type for the API response
+type EmailResponse = {
+  success?: string;
+  error?: string;
+};
+
+const ContactPage = () => {
+  // State variables for form data, status, and loading state
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [status, setStatus] = useState<{ success?: string; error?: string } | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  // Handle Input Changes
+  // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle Form Submission
+  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setStatus(null);
 
-    if (!formData.name || !formData.email || !formData.message) {
-      setErrorMessage("All fields are required!");
+    // Validate form fields
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setStatus({ error: "All fields are required!" });
       return;
     }
 
     setLoading(true);
-    setErrorMessage(null);
-    setSuccessMessage(null);
 
     try {
       const response = await fetch("/api/email", {
@@ -34,14 +42,20 @@ const ContactPage: FC = () => {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      const data: EmailResponse = await response.json();
 
-      if (!response.ok) throw new Error(data.error || "Failed to send message");
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message");
+      }
 
-      setSuccessMessage("Your message has been sent successfully!");
+      setStatus({ success: "Your message has been sent successfully!" });
       setFormData({ name: "", email: "", message: "" });
-    } catch (error: any) {
-      setErrorMessage(error.message || "Something went wrong. Please try again later.");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setStatus({ error: error.message });
+      } else {
+        setStatus({ error: "An unexpected error occurred." });
+      }
     } finally {
       setLoading(false);
     }
@@ -63,7 +77,7 @@ const ContactPage: FC = () => {
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full p-2 rounded-md border border-gray-300 text-black"
+          className="w-full p-3 rounded-md border border-gray-300 text-black focus:ring-2 focus:ring-blue-500"
         />
         <input
           type="email"
@@ -72,7 +86,7 @@ const ContactPage: FC = () => {
           value={formData.email}
           onChange={handleChange}
           required
-          className="w-full p-2 rounded-md border border-gray-300 text-black"
+          className="w-full p-3 rounded-md border border-gray-300 text-black focus:ring-2 focus:ring-blue-500"
         />
         <textarea
           name="message"
@@ -80,23 +94,30 @@ const ContactPage: FC = () => {
           value={formData.message}
           onChange={handleChange}
           required
-          className="w-full p-2 rounded-md border border-gray-300 text-black"
+          className="w-full p-3 rounded-md border border-gray-300 text-black focus:ring-2 focus:ring-blue-500"
           rows={4}
         />
         <button
           type="submit"
           disabled={loading}
-          className={`w-full py-2 rounded-md transition ${
+          className={`w-full py-3 rounded-md transition font-semibold ${
             loading ? "bg-gray-500 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600 text-white"
           }`}
         >
           {loading ? "Sending..." : "Send Message"}
         </button>
       </form>
-
-      {/* Success / Error Messages */}
-      {successMessage && <p className="text-green-400 mt-4">{successMessage}</p>}
-      {errorMessage && <p className="text-red-400 mt-4">{errorMessage}</p>}
+      {/* Display success or error messages */}
+      {status?.success && (
+        <p className="text-green-400 mt-4" aria-live="polite">
+          {status.success}
+        </p>
+      )}
+      {status?.error && (
+        <p className="text-red-400 mt-4" aria-live="polite">
+          {status.error}
+        </p>
+      )}
     </motion.section>
   );
 };

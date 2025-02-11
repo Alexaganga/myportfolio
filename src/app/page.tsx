@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import "@/app/globals.css"; // Ensure the correct path
 
 export default function Home() {
   interface Shape {

@@ -43,13 +43,33 @@ export async function POST(req: Request) {
     console.log("EmailJS API Response:", responseData);
 
     if (!emailResponse.ok) {
-      throw new Error(`EmailJS Error: ${responseData.status || "Unknown status"} - ${responseData.text || "Unknown error"}`);
+      throw new Error(
+        `EmailJS Error: ${responseData.status || "Unknown status"} - ${responseData.text || "Unknown error"}`
+      );
     }
 
     console.log("Email sent successfully!");
     return NextResponse.json({ success: true, message: "Email sent successfully!" });
-  } catch (error: any) {
-    console.error("Email API Error:", error.message);
-    return NextResponse.json({ error: "Failed to send email. Please try again later.", details: error.message }, { status: 500 });
+  } catch (error: unknown) {
+    // Use 'unknown' instead of 'any' for better type safety
+    if (error instanceof Error) {
+      console.error("Email API Error:", error.message);
+      return NextResponse.json(
+        {
+          error: "Failed to send email. Please try again later.",
+          details: error.message || "Unknown error",
+        },
+        { status: 500 }
+      );
+    } else {
+      console.error("Unexpected error type:", error);
+      return NextResponse.json(
+        {
+          error: "Failed to send email. Please try again later.",
+          details: "An unexpected error occurred.",
+        },
+        { status: 500 }
+      );
+    }
   }
 }

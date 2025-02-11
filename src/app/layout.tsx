@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import "./globals.css"; // Ensure this file exists and contains the required styles
+import "@/app/globals.css"; // Ensure the correct path
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaGithub,

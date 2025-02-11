@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
+import "@/app/globals.css"; // Ensure the correct path
 
 const images = ["/images/alex1.jpg"]; // Replace with your profile image(s)
 const projects = [
